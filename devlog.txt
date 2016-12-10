@@ -1,0 +1,15 @@
+Sat 10 Dec
+
+Reasearch project. Have been working with RSS before, but on the web backed 
+side.
+
+Mostly used to work with JSON but xml is no problem iOS even have a native
+parser. NSXMLParser. Think Im going to use that. 
+
+Been also been looking at open source third part libarires for RSS parsing but it seams overkill for such a 
+small task. 
+
+Third party libararies can cause much time them self to intergrate properly 
+so in many cases it takes less time to code it yourself. 
+
+Setting up project, setting up git repro. 
