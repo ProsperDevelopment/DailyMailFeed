@@ -1,0 +1,536 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		520B04BC1DFC5329006355F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B04BB1DFC5329006355F7 /* main.m */; };
+		520B04BF1DFC5329006355F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B04BE1DFC5329006355F7 /* AppDelegate.m */; };
+		520B04C21DFC5329006355F7 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B04C11DFC5329006355F7 /* MasterViewController.m */; };
+		520B04C51DFC5329006355F7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B04C41DFC5329006355F7 /* DetailViewController.m */; };
+		520B04C81DFC5329006355F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520B04C61DFC5329006355F7 /* Main.storyboard */; };
+		520B04CA1DFC5329006355F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520B04C91DFC5329006355F7 /* Assets.xcassets */; };
+		520B04CD1DFC5329006355F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520B04CB1DFC5329006355F7 /* LaunchScreen.storyboard */; };
+		520B04D81DFC5329006355F7 /* DailyMailFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B04D71DFC5329006355F7 /* DailyMailFeedTests.m */; };
+		520B04E31DFC5329006355F7 /* DailyMailFeedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B04E21DFC5329006355F7 /* DailyMailFeedUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		520B04D41DFC5329006355F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 520B04AF1DFC5329006355F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 520B04B61DFC5329006355F7;
+			remoteInfo = DailyMailFeed;
+		};
+		520B04DF1DFC5329006355F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 520B04AF1DFC5329006355F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 520B04B61DFC5329006355F7;
+			remoteInfo = DailyMailFeed;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		520B04B71DFC5329006355F7 /* DailyMailFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyMailFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		520B04BB1DFC5329006355F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		520B04BD1DFC5329006355F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		520B04BE1DFC5329006355F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		520B04C01DFC5329006355F7 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		520B04C11DFC5329006355F7 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		520B04C31DFC5329006355F7 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		520B04C41DFC5329006355F7 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		520B04C71DFC5329006355F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		520B04C91DFC5329006355F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		520B04CC1DFC5329006355F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		520B04CE1DFC5329006355F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		520B04D31DFC5329006355F7 /* DailyMailFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyMailFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		520B04D71DFC5329006355F7 /* DailyMailFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyMailFeedTests.m; sourceTree = "<group>"; };
+		520B04D91DFC5329006355F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		520B04DE1DFC5329006355F7 /* DailyMailFeedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyMailFeedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		520B04E21DFC5329006355F7 /* DailyMailFeedUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyMailFeedUITests.m; sourceTree = "<group>"; };
+		520B04E41DFC5329006355F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		520B04B41DFC5329006355F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		520B04D01DFC5329006355F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		520B04DB1DFC5329006355F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		520B04AE1DFC5329006355F7 = {
+			isa = PBXGroup;
+			children = (
+				520B04B91DFC5329006355F7 /* DailyMailFeed */,
+				520B04D61DFC5329006355F7 /* DailyMailFeedTests */,
+				520B04E11DFC5329006355F7 /* DailyMailFeedUITests */,
+				520B04B81DFC5329006355F7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		520B04B81DFC5329006355F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				520B04B71DFC5329006355F7 /* DailyMailFeed.app */,
+				520B04D31DFC5329006355F7 /* DailyMailFeedTests.xctest */,
+				520B04DE1DFC5329006355F7 /* DailyMailFeedUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		520B04B91DFC5329006355F7 /* DailyMailFeed */ = {
+			isa = PBXGroup;
+			children = (
+				520B04BD1DFC5329006355F7 /* AppDelegate.h */,
+				520B04BE1DFC5329006355F7 /* AppDelegate.m */,
+				520B04C01DFC5329006355F7 /* MasterViewController.h */,
+				520B04C11DFC5329006355F7 /* MasterViewController.m */,
+				520B04C31DFC5329006355F7 /* DetailViewController.h */,
+				520B04C41DFC5329006355F7 /* DetailViewController.m */,
+				520B04C61DFC5329006355F7 /* Main.storyboard */,
+				520B04C91DFC5329006355F7 /* Assets.xcassets */,
+				520B04CB1DFC5329006355F7 /* LaunchScreen.storyboard */,
+				520B04CE1DFC5329006355F7 /* Info.plist */,
+				520B04BA1DFC5329006355F7 /* Supporting Files */,
+			);
+			path = DailyMailFeed;
+			sourceTree = "<group>";
+		};
+		520B04BA1DFC5329006355F7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				520B04BB1DFC5329006355F7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		520B04D61DFC5329006355F7 /* DailyMailFeedTests */ = {
+			isa = PBXGroup;
+			children = (
+				520B04D71DFC5329006355F7 /* DailyMailFeedTests.m */,
+				520B04D91DFC5329006355F7 /* Info.plist */,
+			);
+			path = DailyMailFeedTests;
+			sourceTree = "<group>";
+		};
+		520B04E11DFC5329006355F7 /* DailyMailFeedUITests */ = {
+			isa = PBXGroup;
+			children = (
+				520B04E21DFC5329006355F7 /* DailyMailFeedUITests.m */,
+				520B04E41DFC5329006355F7 /* Info.plist */,
+			);
+			path = DailyMailFeedUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		520B04B61DFC5329006355F7 /* DailyMailFeed */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 520B04E71DFC5329006355F7 /* Build configuration list for PBXNativeTarget "DailyMailFeed" */;
+			buildPhases = (
+				520B04B31DFC5329006355F7 /* Sources */,
+				520B04B41DFC5329006355F7 /* Frameworks */,
+				520B04B51DFC5329006355F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DailyMailFeed;
+			productName = DailyMailFeed;
+			productReference = 520B04B71DFC5329006355F7 /* DailyMailFeed.app */;
+			productType = "com.apple.product-type.application";
+		};
+		520B04D21DFC5329006355F7 /* DailyMailFeedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 520B04EA1DFC5329006355F7 /* Build configuration list for PBXNativeTarget "DailyMailFeedTests" */;
+			buildPhases = (
+				520B04CF1DFC5329006355F7 /* Sources */,
+				520B04D01DFC5329006355F7 /* Frameworks */,
+				520B04D11DFC5329006355F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				520B04D51DFC5329006355F7 /* PBXTargetDependency */,
+			);
+			name = DailyMailFeedTests;
+			productName = DailyMailFeedTests;
+			productReference = 520B04D31DFC5329006355F7 /* DailyMailFeedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		520B04DD1DFC5329006355F7 /* DailyMailFeedUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 520B04ED1DFC5329006355F7 /* Build configuration list for PBXNativeTarget "DailyMailFeedUITests" */;
+			buildPhases = (
+				520B04DA1DFC5329006355F7 /* Sources */,
+				520B04DB1DFC5329006355F7 /* Frameworks */,
+				520B04DC1DFC5329006355F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				520B04E01DFC5329006355F7 /* PBXTargetDependency */,
+			);
+			name = DailyMailFeedUITests;
+			productName = DailyMailFeedUITests;
+			productReference = 520B04DE1DFC5329006355F7 /* DailyMailFeedUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		520B04AF1DFC5329006355F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Prosper Development";
+				TargetAttributes = {
+					520B04B61DFC5329006355F7 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					520B04D21DFC5329006355F7 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 520B04B61DFC5329006355F7;
+					};
+					520B04DD1DFC5329006355F7 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 520B04B61DFC5329006355F7;
+					};
+				};
+			};
+			buildConfigurationList = 520B04B21DFC5329006355F7 /* Build configuration list for PBXProject "DailyMailFeed" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 520B04AE1DFC5329006355F7;
+			productRefGroup = 520B04B81DFC5329006355F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				520B04B61DFC5329006355F7 /* DailyMailFeed */,
+				520B04D21DFC5329006355F7 /* DailyMailFeedTests */,
+				520B04DD1DFC5329006355F7 /* DailyMailFeedUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		520B04B51DFC5329006355F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				520B04CD1DFC5329006355F7 /* LaunchScreen.storyboard in Resources */,
+				520B04CA1DFC5329006355F7 /* Assets.xcassets in Resources */,
+				520B04C81DFC5329006355F7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		520B04D11DFC5329006355F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		520B04DC1DFC5329006355F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		520B04B31DFC5329006355F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				520B04BF1DFC5329006355F7 /* AppDelegate.m in Sources */,
+				520B04C21DFC5329006355F7 /* MasterViewController.m in Sources */,
+				520B04BC1DFC5329006355F7 /* main.m in Sources */,
+				520B04C51DFC5329006355F7 /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		520B04CF1DFC5329006355F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				520B04D81DFC5329006355F7 /* DailyMailFeedTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		520B04DA1DFC5329006355F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				520B04E31DFC5329006355F7 /* DailyMailFeedUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		520B04D51DFC5329006355F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 520B04B61DFC5329006355F7 /* DailyMailFeed */;
+			targetProxy = 520B04D41DFC5329006355F7 /* PBXContainerItemProxy */;
+		};
+		520B04E01DFC5329006355F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 520B04B61DFC5329006355F7 /* DailyMailFeed */;
+			targetProxy = 520B04DF1DFC5329006355F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		520B04C61DFC5329006355F7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				520B04C71DFC5329006355F7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		520B04CB1DFC5329006355F7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				520B04CC1DFC5329006355F7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		520B04E51DFC5329006355F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		520B04E61DFC5329006355F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		520B04E81DFC5329006355F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DailyMailFeed/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = prosper.DailyMailFeed;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		520B04E91DFC5329006355F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DailyMailFeed/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = prosper.DailyMailFeed;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		520B04EB1DFC5329006355F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DailyMailFeedTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = prosper.DailyMailFeedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DailyMailFeed.app/DailyMailFeed";
+			};
+			name = Debug;
+		};
+		520B04EC1DFC5329006355F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DailyMailFeedTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = prosper.DailyMailFeedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DailyMailFeed.app/DailyMailFeed";
+			};
+			name = Release;
+		};
+		520B04EE1DFC5329006355F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DailyMailFeedUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = prosper.DailyMailFeedUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DailyMailFeed;
+			};
+			name = Debug;
+		};
+		520B04EF1DFC5329006355F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DailyMailFeedUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = prosper.DailyMailFeedUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DailyMailFeed;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		520B04B21DFC5329006355F7 /* Build configuration list for PBXProject "DailyMailFeed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				520B04E51DFC5329006355F7 /* Debug */,
+				520B04E61DFC5329006355F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		520B04E71DFC5329006355F7 /* Build configuration list for PBXNativeTarget "DailyMailFeed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				520B04E81DFC5329006355F7 /* Debug */,
+				520B04E91DFC5329006355F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		520B04EA1DFC5329006355F7 /* Build configuration list for PBXNativeTarget "DailyMailFeedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				520B04EB1DFC5329006355F7 /* Debug */,
+				520B04EC1DFC5329006355F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		520B04ED1DFC5329006355F7 /* Build configuration list for PBXNativeTarget "DailyMailFeedUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				520B04EE1DFC5329006355F7 /* Debug */,
+				520B04EF1DFC5329006355F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 520B04AF1DFC5329006355F7 /* Project object */;
+}
