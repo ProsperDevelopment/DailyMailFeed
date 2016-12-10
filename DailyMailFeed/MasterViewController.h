@@ -2,7 +2,7 @@
 //  MasterViewController.h
 //  DailyMailFeed
 //
-//  Created by macbookpro on 2016-12-10.
+//  Created by emmanuel on 2016-12-10.
 //  Copyright © 2016 Prosper Development. All rights reserved.
 //
 
@@ -12,8 +12,10 @@
 
 @interface MasterViewController : UITableViewController
 
+
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
+@property (strong, nonatomic) IBOutlet UITableView *rssMasterTableView;
 
 @end
 
