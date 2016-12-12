@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *feedMasterTableView;
 
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
-@property (strong, nonatomic) IBOutlet UITableView *rssMasterTableView;
+@property (strong, nonatomic) IBOutlet UITableView *feedTableView;
 
 @end
 

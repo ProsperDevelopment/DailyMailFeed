@@ -16,6 +16,8 @@
 		520B04CD1DFC5329006355F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520B04CB1DFC5329006355F7 /* LaunchScreen.storyboard */; };
 		520B04D81DFC5329006355F7 /* DailyMailFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B04D71DFC5329006355F7 /* DailyMailFeedTests.m */; };
 		520B04E31DFC5329006355F7 /* DailyMailFeedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B04E21DFC5329006355F7 /* DailyMailFeedUITests.m */; };
+		525ACDC91DFEFD1900935B4F /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 525ACDC81DFEFD1900935B4F /* FeedModel.m */; };
+		527B9A1A1DFDD982008CA108 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 527B9A191DFDD982008CA108 /* FeedTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,10 @@
 		520B04DE1DFC5329006355F7 /* DailyMailFeedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyMailFeedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		520B04E21DFC5329006355F7 /* DailyMailFeedUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyMailFeedUITests.m; sourceTree = "<group>"; };
 		520B04E41DFC5329006355F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		525ACDC71DFEFD1900935B4F /* FeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedModel.h; sourceTree = "<group>"; };
+		525ACDC81DFEFD1900935B4F /* FeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedModel.m; sourceTree = "<group>"; };
+		527B9A181DFDD982008CA108 /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
+		527B9A191DFDD982008CA108 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,8 @@
 				520B04BE1DFC5329006355F7 /* AppDelegate.m */,
 				520B04C01DFC5329006355F7 /* MasterViewController.h */,
 				520B04C11DFC5329006355F7 /* MasterViewController.m */,
+				527B9A181DFDD982008CA108 /* FeedTableViewCell.h */,
+				527B9A191DFDD982008CA108 /* FeedTableViewCell.m */,
 				520B04C31DFC5329006355F7 /* DetailViewController.h */,
 				520B04C41DFC5329006355F7 /* DetailViewController.m */,
 				520B04C61DFC5329006355F7 /* Main.storyboard */,
@@ -115,6 +123,8 @@
 				520B04CB1DFC5329006355F7 /* LaunchScreen.storyboard */,
 				520B04CE1DFC5329006355F7 /* Info.plist */,
 				520B04BA1DFC5329006355F7 /* Supporting Files */,
+				525ACDC71DFEFD1900935B4F /* FeedModel.h */,
+				525ACDC81DFEFD1900935B4F /* FeedModel.m */,
 			);
 			path = DailyMailFeed;
 			sourceTree = "<group>";
@@ -278,8 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				527B9A1A1DFDD982008CA108 /* FeedTableViewCell.m in Sources */,
 				520B04BF1DFC5329006355F7 /* AppDelegate.m in Sources */,
 				520B04C21DFC5329006355F7 /* MasterViewController.m in Sources */,
+				525ACDC91DFEFD1900935B4F /* FeedModel.m in Sources */,
 				520B04BC1DFC5329006355F7 /* main.m in Sources */,
 				520B04C51DFC5329006355F7 /* DetailViewController.m in Sources */,
 			);
@@ -513,6 +525,7 @@
 				520B04E91DFC5329006355F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		520B04EA1DFC5329006355F7 /* Build configuration list for PBXNativeTarget "DailyMailFeedTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +534,7 @@
 				520B04EC1DFC5329006355F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		520B04ED1DFC5329006355F7 /* Build configuration list for PBXNativeTarget "DailyMailFeedUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +543,7 @@
 				520B04EF1DFC5329006355F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

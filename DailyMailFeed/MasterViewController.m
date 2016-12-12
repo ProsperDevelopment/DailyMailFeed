@@ -1,14 +1,19 @@
 
 #import "MasterViewController.h"
-
+#import "FeedTableViewCell.h"
 #import "DetailViewController.h"
+#import "FeedModel.h"
 
 @interface MasterViewController () {
-    NSXMLParser *parser;
+    NSXMLParser *xmlParser;
+    
     NSMutableArray *feeds;
-    NSMutableDictionary *item;
-    NSMutableString *title;
-    NSMutableString *link;
+    NSMutableDictionary *feedItem;
+    NSMutableString *feedTitle;
+    NSMutableString *feedUrl;
+    NSMutableString *feedThumbUrl;
+    NSMutableString *feedDescription;
+    Boolean *feedHasBeenMarkedAsRead;
     NSString *element;
 }
 @end
@@ -21,15 +26,26 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    feeds = [[NSMutableArray alloc] init];
-  //  NSURL *rssUrl = [NSURL URLWithString:@"http://images.apple.com/main/rss/hotnews/hotnews.rss"];
-    NSURL *rssUrl = [NSURL URLWithString:@"http://www.dailymail.co.uk/sport/index.rss"];
-    parser = [[NSXMLParser alloc] initWithContentsOfURL:rssUrl];
-    [parser setDelegate:self];
-    [parser setShouldResolveExternalEntities:NO];
     
-    [parser parse];
+    [super viewDidLoad];
+    
+    // setup the feed model
+    FeedModel *feedModel = [FeedModel alloc];
+    
+    // fetch the feeds from RSS feed
+    [feedModel fetchFeeds:^(NSMutableArray* feedsFetched) {
+        feeds = feedsFetched;
+      
+        [self.tableView reloadData];
+        
+    }];
+    
+    
+      self.feedMasterTableView.allowsMultipleSelectionDuringEditing = NO;
+
+    [self.feedMasterTableView setDelegate:self];
+    [self.feedMasterTableView setDataSource:self];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,84 +65,79 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
+    FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    if (!cell) {
+        cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    
+    cell.feedTitle.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
+
+    
+    
+    cell.feedDescription.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"description"];
+
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[feeds objectAtIndex:indexPath.row] objectForKey: @"thumb"]]];
+    NSLog(@"url: %@",[[feeds objectAtIndex:indexPath.row] objectForKey: @"thumb"]);
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data) {
+            UIImage *image = [UIImage imageWithData:data];
+            if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    FeedTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                    if (updateCell)
+                        updateCell.thumbImage.image = image;
+                });
+            }
+        }
+    }];
+    [task resume];
+   
+    
+   //  cell.feedDescription.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
+    
+    
+    
+    // cell.imageView.thumb =[[feeds objectAtIndex:indexPath.row] objectForKey: @""];
     return cell;
 }
 
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES becouse we wan't specified item to be editable.
+    return YES;
+}
+
+// Editing the cells
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    element = elementName;
     
-    // debug
-    NSLog(@"element: %@", elementName);
-    
-    if ([element isEqualToString:@"item"]) {
+    // remove
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        item    = [[NSMutableDictionary alloc] init];
-        title   = [[NSMutableString alloc] init];
-        link    = [[NSMutableString alloc] init];
+        
+        // remove it from our feed collection
+           [feeds removeObjectAtIndex:indexPath.row];
+        
+        // remove and animate the cell
+            
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:(indexPath), nil] withRowAnimation:UITableViewRowAnimationFade];
+
         
     }
-    
 }
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    
-    
-    // debug
-    NSLog(@"element end: %@", elementName);
 
-    
-    if ([elementName isEqualToString:@"item"]) {
-        
-        title = [[title componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "];
-
-        [item setObject:title forKey:@"title"];
-        [item setObject:link forKey:@"link"];
-        
-        [feeds addObject:[item copy]];
-        
-    }
-    
-}
-
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    
-    NSLog(@"element fc %@", element);
-    
-    if ([element isEqualToString:@"title"]) {
-        
-        [title appendString:string];
-         NSLog(@"title: %@", title);
-    } else if ([element isEqualToString:@"link"]) {
-        [link appendString:string];
-    }
-    
-}
-
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-    
-    [self.tableView reloadData];
-    
-}
-
-// for debugging error in xml
-
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    NSString * errorString = [NSString stringWithFormat:@"Unable to download story feed from web site (Error code %li )", (long)[parseError code]];
-    NSLog(@"error parsing XML: %@", errorString);
-  
-    NSLog(@"NotPARSED");
-}
-
+     
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSString *string = [feeds[indexPath.row] objectForKey: @"link"];
+        // TODO
+        
+     //   NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    //    NSString *string = [feeds[indexPath.row] objectForKey: @"link"];
         [segue destinationViewController];
         
     }

@@ -1,16 +1,12 @@
-Sat 10 Dec
+Sat 10 Dec 2 h
 
-Research project. Have been working with RSS before, but on the web backed
-side.
+Research project. Have been working with RSS before, but on the web backed side.
 
-Mostly used to work with JSON but xml is no problem iOS even have a native
-parser. NSXMLParser. Think I’m going to use that.
+Mostly used to work with JSON but xml is no problem iOS even have a native parser. NSXMLParser. Think I’m going to use that.
 
-Been also been looking at open source third part libraries for RSS parsing but $
-small task.
+Been also been looking at open source third part libraries for RSS parsing but small task.
 
-Third party libraries can cause much time them self to integrate properly
-so in many cases it takes less time to code it yourself.
+Third party libraries can cause much time them self to integrate properly so in many cases it takes less time to code it yourself.
 
 Setting up project, setting up git repro.
 
@@ -18,7 +14,23 @@ Implementing xml url parser. For start I extract title and link.  Setting up App
 
 Problems with feeds not showing up lead me to debugging the parser and finding out that there was problems with line breaks in the xml so I remove all line breaks before populating my item.
 
+Sun 11 Dec 1 h
+Creating custom TableViewCell. Extracting media tags attribute for thumb url. 
+
+Setting up front-end for delete functionality. 
+
+Cleaning up, Setting better variable names.
+
+Monday 12 Dec 2 h
+
+Looking at how to implement delete. I need to have my own local data model and also I want it to be more MVC so I separate the sketchy made model from the MasterViewControler.
+
+Implement the datafetching in the model and call it with a block callback from the MastViewControler.
+
+Implemented delete with animation. Cleaning up code, writing comments.
 
 
+
+  
   
 
