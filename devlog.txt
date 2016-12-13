@@ -33,8 +33,9 @@ Thuesday 13 Dec 3 h
 
 Implemented search. 
 
-Rewriting method for deleting.
+Rewriting method for deleting. Didn't work any more when displayed search results.
 
-  
+
+Implement Reset search.  
   
 
