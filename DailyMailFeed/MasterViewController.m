@@ -104,13 +104,7 @@
     }];
     [task resume];
    
-    
-   //  cell.feedDescription.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
-    
-    
-    
-    // cell.imageView.thumb =[[feeds objectAtIndex:indexPath.row] objectForKey: @""];
-    return cell;
+   return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -127,11 +121,17 @@
         
         // TODO remove by title instead
         // remove it from our feed collection
-           [feeds removeObjectAtIndex:indexPath.row] ;
         
+        NSLog(@"orginalIndex %@",[[displayFeeds objectAtIndex:indexPath.row] objectForKey:@"orginalIndex"] );
+        NSLog(@"orginalIndex int %i",[[[displayFeeds objectAtIndex:indexPath.row] objectForKey:@"orginalIndex"] intValue]);
+        
+       [feeds removeObject:[displayFeeds objectAtIndex:indexPath.row]];
+        
+        
+        [displayFeeds removeObjectAtIndex:indexPath.row];
         // remove and animate the cell
             
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:(indexPath), nil] withRowAnimation:UITableViewRowAnimationFade];
+       [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:(indexPath), nil] withRowAnimation:UITableViewRowAnimationFade];
 
         
     }
@@ -144,6 +144,9 @@
 
 - (void)searchFeeds {
     
+    
+   
+        
     
     // setup a new array to store the results in
     NSMutableArray *displayFeedsNew = [[NSMutableArray alloc] init];
@@ -167,9 +170,22 @@
     
     displayFeeds = displayFeedsNew;
     
+        
+    
+        
     // update the table
     [self.tableView reloadData];
     
+    
+}
+
+
+-(void)resetSearch {
+    
+    displayFeeds = feeds;
+    
+    // update the table
+    [self.tableView reloadData];
     
 }
 
@@ -189,6 +205,7 @@
         searchQuery = searchText;   }
     else {
         isSearching = NO;
+        [self resetSearch];
     }
    }
 
