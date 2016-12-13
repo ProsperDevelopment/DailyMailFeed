@@ -21,7 +21,7 @@ Setting up front-end for delete functionality.
 
 Cleaning up, Setting better variable names.
 
-Monday 12 Dec 2 h
+Monday 12 Dec 3 h
 
 Looking at how to implement delete. I need to have my own local data model and also I want it to be more MVC so I separate the sketchy made model from the MasterViewControler.
 
@@ -29,7 +29,11 @@ Implement the datafetching in the model and call it with a block callback from t
 
 Implemented delete with animation. Cleaning up code, writing comments.
 
+Thuesday 13 Dec 3 h
 
+Implemented search. 
+
+Rewriting method for deleting.
 
   
   

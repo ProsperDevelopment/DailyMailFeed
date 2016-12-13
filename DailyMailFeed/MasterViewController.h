@@ -11,13 +11,16 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface MasterViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
+ BOOL isSearching;
+    
+}
+
 @property (strong, nonatomic) IBOutlet UITableView *feedMasterTableView;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
-
-@property (strong, nonatomic) IBOutlet UITableView *feedTableView;
 
 @end
 

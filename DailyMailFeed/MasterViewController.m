@@ -8,13 +8,11 @@
     NSXMLParser *xmlParser;
     
     NSMutableArray *feeds;
-    NSMutableDictionary *feedItem;
-    NSMutableString *feedTitle;
-    NSMutableString *feedUrl;
-    NSMutableString *feedThumbUrl;
-    NSMutableString *feedDescription;
-    Boolean *feedHasBeenMarkedAsRead;
+    NSMutableArray *displayFeeds;
     NSString *element;
+    NSString *searchQuery;
+    
+   
 }
 @end
 
@@ -29,16 +27,24 @@
     
     [super viewDidLoad];
     
+    [self.searchBar setShowsScopeBar:YES];
+    
+    self.searchBar.delegate = self;
+    
     // setup the feed model
     FeedModel *feedModel = [FeedModel alloc];
     
     // fetch the feeds from RSS feed
     [feedModel fetchFeeds:^(NSMutableArray* feedsFetched) {
         feeds = feedsFetched;
+        
+        displayFeeds = [feeds mutableCopy];
       
         [self.tableView reloadData];
         
     }];
+    
+    
     
     
       self.feedMasterTableView.allowsMultipleSelectionDuringEditing = NO;
@@ -61,25 +67,29 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return feeds.count;
+    return displayFeeds.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
+    
+   
+    
     if (!cell) {
         cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    cell.feedTitle.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
+    cell.feedTitle.text = [[displayFeeds objectAtIndex:indexPath.row] objectForKey: @"title"];
 
     
-    
-    cell.feedDescription.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"description"];
+    // not used
+   // cell.feedDescription.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"description"];
+
+    // get thumb image
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[displayFeeds objectAtIndex:indexPath.row] objectForKey: @"thumb"]]];
 
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[feeds objectAtIndex:indexPath.row] objectForKey: @"thumb"]]];
-    NSLog(@"url: %@",[[feeds objectAtIndex:indexPath.row] objectForKey: @"thumb"]);
     NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (data) {
             UIImage *image = [UIImage imageWithData:data];
@@ -115,9 +125,9 @@
     // remove
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        
+        // TODO remove by title instead
         // remove it from our feed collection
-           [feeds removeObjectAtIndex:indexPath.row];
+           [feeds removeObjectAtIndex:indexPath.row] ;
         
         // remove and animate the cell
             
@@ -125,10 +135,71 @@
 
         
     }
+    
+    
+   
 }
 
 
-     
+
+- (void)searchFeeds {
+    
+    
+    // setup a new array to store the results in
+    NSMutableArray *displayFeedsNew = [[NSMutableArray alloc] init];
+  
+    
+    // itarete our array of feeds
+    for (int i = 0; i < [feeds count]; i++)
+    {
+        NSString *title = [[feeds objectAtIndex:i] objectForKey: @"title"];
+        
+        // make the search case insensitive
+        title = [title lowercaseString];
+        searchQuery = [searchQuery lowercaseString];
+               if ([title rangeOfString:searchQuery].location != NSNotFound) {
+            [displayFeedsNew addObject:[feeds objectAtIndex:i]];
+        }
+        
+    }
+    
+    // set the search results to be displayed
+    
+    displayFeeds = displayFeedsNew;
+    
+    // update the table
+    [self.tableView reloadData];
+    
+    
+}
+
+
+// searchbar
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    isSearching = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"Text change - %d",isSearching);
+    
+    
+    if([searchText length] != 0) {
+        isSearching = YES;
+        searchQuery = searchText;   }
+    else {
+        isSearching = NO;
+    }
+   }
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Cancel clicked");
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Search Clicked");
+    [self searchFeeds];
+}
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

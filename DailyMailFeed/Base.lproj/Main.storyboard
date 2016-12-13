@@ -80,9 +80,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="5sD-3g-eaI">
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="136" id="gVF-E4-iMm" customClass="FeedTableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="375" height="136"/>
+                                <rect key="frame" x="0.0" y="130" width="375" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gVF-E4-iMm" id="DjS-sf-063">
                                     <frame key="frameInset" width="375" height="136"/>
@@ -92,24 +97,22 @@
                                             <frame key="frameInset" minX="8" minY="8" width="95" height="101"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBk-4x-5iX">
-                                            <frame key="frameInset" minX="120" minY="74" width="247" height="33"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsv-kU-iZG">
+                                            <frame key="frameInset" minX="111" minY="8" width="250" height="99"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsv-kU-iZG">
-                                            <frame key="frameInset" minX="120" minY="19" width="255" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="sdfsad fasdf sadfa sdfasdad fasd fasdfa sdfasdfasdf asdfad">
+                                                    <attributes>
+                                                        <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="feedDescription" destination="fBk-4x-5iX" id="vZW-cw-gGZ"/>
                                     <outlet property="feedTitle" destination="hsv-kU-iZG" id="qfZ-tr-4Rz"/>
                                     <outlet property="thumbImage" destination="EAw-Pm-AMN" id="Dcg-f8-ccM"/>
                                 </connections>
@@ -123,12 +126,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Daily Mail" id="Zdf-7t-Un8"/>
                     <connections>
+                        <outlet property="SearchBar" destination="5sD-3g-eaI" id="TxN-cf-bBL"/>
                         <outlet property="feedMasterTableView" destination="r7i-6Z-zg0" id="yhm-Wl-6Py"/>
+                        <outlet property="searchBar" destination="5sD-3g-eaI" id="xzE-Gf-tDM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="-630.13493253373315"/>
+            <point key="canvasLocation" x="708" y="-672"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">

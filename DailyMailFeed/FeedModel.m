@@ -20,9 +20,12 @@ NSXMLParser *xmlParser;
 NSMutableArray *feeds;
 NSMutableDictionary *feedItem;
 NSMutableString *feedTitle;
+NSMutableString *feedOrgIndex;
 NSMutableString *feedUrl;
 NSMutableString *feedThumbUrl;
 NSMutableString *feedDescription;
+NSMutableString *feedHasBeenMarkedAsRead;
+
 NSString *element;
 
 
@@ -63,6 +66,7 @@ NSString *element;
         feedTitle   = [[NSMutableString alloc] init];
         feedUrl   = [[NSMutableString alloc] init];
         feedDescription = [[NSMutableString alloc] init];
+        feedHasBeenMarkedAsRead = [[NSMutableString alloc] init];
         feedThumbUrl =[[NSMutableString alloc] init];
     }
     
@@ -78,7 +82,7 @@ NSString *element;
 
 // when parser ends an element
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-      
+    
     
     // check if we reach the end of item object
     
@@ -95,10 +99,12 @@ NSString *element;
         [feedItem setObject:feedUrl forKey:@"link"];
         [feedItem setObject:feedDescription forKey:@"description"];
         [feedItem setObject:feedThumbUrl forKey:@"thumb"];
+        [feedItem setObject:@"NO" forKey:@"hasBeenMarkedAsRead"];
+        [feedItem setObject:[NSString stringWithFormat:@"%lu",(unsigned long)[feeds count]] forKey:@"orginalIndex"];
         
         // add it to the collection
         
-        [feeds addObject:[feedItem copy]];
+        [feeds addObject:[feedItem mutableCopy]];
         
     }
     
@@ -118,6 +124,8 @@ NSString *element;
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     
     NSLog(@"element fc %@", element);
+    
+    
     
     if ([element isEqualToString:@"title"]) [feedTitle appendString:string];
     
