@@ -112,6 +112,17 @@
     return YES;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
+    
+    [self performSegueWithIdentifier:@"showDetail" sender:self];
+    
+
+    
+}
+
 // Editing the cells
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -141,12 +152,10 @@
 }
 
 
+// method for execute search
 
 - (void)searchFeeds {
-    
-    
-   
-        
+
     
     // setup a new array to store the results in
     NSMutableArray *displayFeedsNew = [[NSMutableArray alloc] init];
@@ -226,6 +235,14 @@
         
      //   NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     //    NSString *string = [feeds[indexPath.row] objectForKey: @"link"];
+        
+       
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            DetailViewController *destViewController = segue.destinationViewController;
+            destViewController.feed = [displayFeeds objectAtIndex:indexPath.row];
+    
+        
+        
         [segue destinationViewController];
         
     }
