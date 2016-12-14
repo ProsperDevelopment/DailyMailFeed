@@ -45,3 +45,7 @@ Wendsday 14 Dec
 Creating Detail views layout. My first plan was to use a large image, since I saw several diffrent images in the feed I asumed that they where diffrent sizes. But it turned out to only be diffrent tagging of the same image so I have to go with the thumb sized image.
 
 Adding date and time in the data model and to the Detail view.
+
+Adding open url. Had to trim the parsed url string in the model a little.
+
+

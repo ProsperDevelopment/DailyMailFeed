@@ -53,6 +53,8 @@
 }
 
 
+
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(NSDate *)newDetailItem {
@@ -67,5 +69,33 @@
     // }
 }
 
+
+- (IBAction)feedOpenButton:(id)sender {
+    
+   [self openUrl:[self.feed valueForKey:@"link"]];
+    
+}
+
+
+- (void)openUrl:(NSString *)urlString {
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *URL = [NSURL URLWithString:urlString];
+    
+    
+    // if completion handler supported (iOS 10)
+    if ([application respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        
+        [application openURL:URL options:@{}
+           completionHandler:^(BOOL success) {
+               NSLog(@"Open %@: %d",urlString,success);
+           }];
+    } else {
+        
+        //  for iOS < 10
+        BOOL success = [application openURL:URL];
+        NSLog(@"Open %@: %d",urlString,success);
+    }
+}
 
 @end

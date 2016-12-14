@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+- (IBAction)feedOpenButton:(id)sender;
+
 
 @property (strong, nonatomic) NSMutableArray *detailItem;
 @end

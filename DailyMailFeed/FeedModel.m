@@ -97,9 +97,15 @@ NSString *element;
         feedTitle = [self trimLineBreaks:feedTitle];
         feedDescription = [self trimLineBreaks:feedDescription];
         feedDate = [self trimLineBreaks:feedDate];
+        feedUrl = [self trimLineBreaks:feedUrl];
+        
+        // trim url even more
+              feedUrl = [feedUrl substringFromIndex:1];
+        feedUrl = [feedUrl substringToIndex:[feedUrl length] - 12];
+
         
         //format time and date
-        
+
         
             // Convert string to date object
         NSDateFormatter *dateInputFormat = [[NSDateFormatter alloc] init];
@@ -151,11 +157,11 @@ NSString *element;
 }
 
 
+// build values from characters
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     
     NSLog(@"element fc %@", element);
-    
     
     
     if ([element isEqualToString:@"title"]) [feedTitle appendString:string];
@@ -164,20 +170,13 @@ NSString *element;
     
     if ([element isEqualToString:@"pubDate"]) [feedDate appendString:string];
     
-    
-    
     if ([element isEqualToString:@"description"]) [feedDescription appendString:string];
-    
-    
-    
     
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
     // Call completion handler.
     _completionHandler(feeds);
-    
-    
 }
 
 
