@@ -12,7 +12,7 @@
     NSString *element;
     NSString *searchQuery;
     
-   
+    
 }
 @end
 
@@ -27,8 +27,10 @@
     
     [super viewDidLoad];
     
-    [self.searchBar setShowsScopeBar:YES];
     
+    
+    // init searchbar
+    [self.searchBar setShowsScopeBar:YES];
     self.searchBar.delegate = self;
     
     // setup the feed model
@@ -37,18 +39,15 @@
     // fetch the feeds from RSS feed
     [feedModel fetchFeeds:^(NSMutableArray* feedsFetched) {
         feeds = feedsFetched;
-        
         displayFeeds = [feeds mutableCopy];
-      
+        // refresh the tableview
         [self.tableView reloadData];
-        
     }];
     
     
+    // init table
+    self.feedMasterTableView.allowsMultipleSelectionDuringEditing = NO;
     
-    
-      self.feedMasterTableView.allowsMultipleSelectionDuringEditing = NO;
-
     [self.feedMasterTableView setDelegate:self];
     [self.feedMasterTableView setDataSource:self];
     
@@ -73,22 +72,31 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    
-   
+    // get this cells feedData
+    NSMutableDictionary *feedData = [displayFeeds objectAtIndex:indexPath.row];
     
     if (!cell) {
         cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    cell.feedTitle.text = [[displayFeeds objectAtIndex:indexPath.row] objectForKey: @"title"];
-
+    // set title
+    cell.feedTitle.text = [feedData objectForKey: @"title"];
     
-    // not used
-   // cell.feedDescription.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"description"];
-
+    
+    NSLog(@"hasBeenMakedAsRead: %@", [feedData objectForKey: @"hasBeenMarkedAsRead"]);
+    
+    // marked as read with grey background
+    if ([[feedData objectForKey: @"hasBeenMarkedAsRead"] isEqualToString:@"YES"]) {
+        [cell setBackgroundColor:[UIColor lightGrayColor]]; } else {
+             [cell setBackgroundColor:[UIColor whiteColor]];
+        }
+    
+    
+    
+    
     // get thumb image
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [[displayFeeds objectAtIndex:indexPath.row] objectForKey: @"thumb"]]];
-
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [feedData objectForKey: @"thumb"]]];
+    
     
     NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (data) {
@@ -103,8 +111,8 @@
         }
     }];
     [task resume];
-   
-   return cell;
+    
+    return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -113,15 +121,12 @@
 }
 
 
+// Show detail
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-    
     [self performSegueWithIdentifier:@"showDetail" sender:self];
-    
-
-    
 }
+
 
 // Editing the cells
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -136,30 +141,26 @@
         NSLog(@"orginalIndex %@",[[displayFeeds objectAtIndex:indexPath.row] objectForKey:@"orginalIndex"] );
         NSLog(@"orginalIndex int %i",[[[displayFeeds objectAtIndex:indexPath.row] objectForKey:@"orginalIndex"] intValue]);
         
-       [feeds removeObject:[displayFeeds objectAtIndex:indexPath.row]];
+        [feeds removeObject:[displayFeeds objectAtIndex:indexPath.row]];
         
         
         [displayFeeds removeObjectAtIndex:indexPath.row];
         // remove and animate the cell
-            
-       [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:(indexPath), nil] withRowAnimation:UITableViewRowAnimationFade];
-
+        
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:(indexPath), nil] withRowAnimation:UITableViewRowAnimationFade];
         
     }
-    
-    
-   
 }
 
 
 // method for execute search
 
 - (void)searchFeeds {
-
+    
     
     // setup a new array to store the results in
     NSMutableArray *displayFeedsNew = [[NSMutableArray alloc] init];
-  
+    
     
     // itarete our array of feeds
     for (int i = 0; i < [feeds count]; i++)
@@ -169,7 +170,7 @@
         // make the search case insensitive
         title = [title lowercaseString];
         searchQuery = [searchQuery lowercaseString];
-               if ([title rangeOfString:searchQuery].location != NSNotFound) {
+        if ([title rangeOfString:searchQuery].location != NSNotFound) {
             [displayFeedsNew addObject:[feeds objectAtIndex:i]];
         }
         
@@ -179,9 +180,9 @@
     
     displayFeeds = displayFeedsNew;
     
-        
     
-        
+    
+    
     // update the table
     [self.tableView reloadData];
     
@@ -216,7 +217,7 @@
         isSearching = NO;
         [self resetSearch];
     }
-   }
+}
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"Cancel clicked");
@@ -233,14 +234,17 @@
         
         // TODO
         
-     //   NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    //    NSString *string = [feeds[indexPath.row] objectForKey: @"link"];
+        //   NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //    NSString *string = [feeds[indexPath.row] objectForKey: @"link"];
         
-       
-            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            DetailViewController *destViewController = segue.destinationViewController;
-            destViewController.feed = [displayFeeds objectAtIndex:indexPath.row];
-    
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        DetailViewController *destViewController = segue.destinationViewController;
+        destViewController.feed = [displayFeeds objectAtIndex:indexPath.row];
+        
+        [[self.tableView cellForRowAtIndexPath:indexPath] setBackgroundColor:[UIColor lightGrayColor]];
+        
+        [[displayFeeds objectAtIndex:indexPath.row] setValue:@"YES" forKey:@"hasBeenMarkedAsRead"];
         
         
         [segue destinationViewController];
