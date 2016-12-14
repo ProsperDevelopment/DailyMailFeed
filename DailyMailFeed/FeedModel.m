@@ -22,6 +22,8 @@ NSMutableDictionary *feedItem;
 NSMutableString *feedTitle;
 NSMutableString *feedOrgIndex;
 NSMutableString *feedUrl;
+NSMutableString *feedDate;
+NSMutableString *feedTime;
 NSMutableString *feedThumbUrl;
 NSMutableString *feedDescription;
 NSMutableString *feedHasBeenMarkedAsRead;
@@ -64,6 +66,8 @@ NSString *element;
         
         feedItem    = [[NSMutableDictionary alloc] init];
         feedTitle   = [[NSMutableString alloc] init];
+        feedDate   = [[NSMutableString alloc] init];
+
         feedUrl   = [[NSMutableString alloc] init];
         feedDescription = [[NSMutableString alloc] init];
         feedHasBeenMarkedAsRead = [[NSMutableString alloc] init];
@@ -92,6 +96,31 @@ NSString *element;
         // remove linebreaks
         feedTitle = [self trimLineBreaks:feedTitle];
         feedDescription = [self trimLineBreaks:feedDescription];
+        feedDate = [self trimLineBreaks:feedDate];
+        
+        //format time and date
+        
+        
+            // Convert string to date object
+        NSDateFormatter *dateInputFormat = [[NSDateFormatter alloc] init];
+        [dateInputFormat setDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        
+        NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+        [timeFormat setDateFormat:@"HH:mm:ss"];
+        
+        NSLog(@"FeedDate: %@",feedDate);
+        
+        
+        NSDate *aDate = [dateInputFormat dateFromString:feedDate];
+        
+         
+         feedDate = [[dateFormat stringFromDate:aDate] mutableCopy];
+         feedTime = [[timeFormat stringFromDate:aDate] mutableCopy];
+        
+        
         
         // create new feed item
         
@@ -99,6 +128,8 @@ NSString *element;
         [feedItem setObject:feedUrl forKey:@"link"];
         [feedItem setObject:feedDescription forKey:@"description"];
         [feedItem setObject:feedThumbUrl forKey:@"thumb"];
+             [feedItem setObject:feedDate forKey:@"date"];
+             [feedItem setObject:feedTime forKey:@"time"];
         [feedItem setObject:@"NO" forKey:@"hasBeenMarkedAsRead"];
         [feedItem setObject:[NSString stringWithFormat:@"%lu",(unsigned long)[feeds count]] forKey:@"orginalIndex"];
         
@@ -130,6 +161,10 @@ NSString *element;
     if ([element isEqualToString:@"title"]) [feedTitle appendString:string];
     
     if ([element isEqualToString:@"link"]) [feedUrl appendString:string];
+    
+    if ([element isEqualToString:@"pubDate"]) [feedDate appendString:string];
+    
+    
     
     if ([element isEqualToString:@"description"]) [feedDescription appendString:string];
     
