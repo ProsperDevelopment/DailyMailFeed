@@ -50,3 +50,6 @@ Adding open url. Had to trim the parsed url string in the model a little.
 
 Implemeting marked as read.
 
+Thursday 15 Dec 1 h polish
+
+Final polish. Adjusted layout. Set marked as read color. 

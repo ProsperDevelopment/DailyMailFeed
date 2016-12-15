@@ -11,7 +11,7 @@
     NSMutableArray *displayFeeds;
     NSString *element;
     NSString *searchQuery;
-    
+    UIColor *colorHasBeenMarkedAsRead;
     
 }
 @end
@@ -33,6 +33,7 @@
     [self.searchBar setShowsScopeBar:YES];
     self.searchBar.delegate = self;
     
+
     // setup the feed model
     FeedModel *feedModel = [FeedModel alloc];
     
@@ -50,6 +51,16 @@
     
     [self.feedMasterTableView setDelegate:self];
     [self.feedMasterTableView setDataSource:self];
+    
+    
+    // set markedAsRead color
+    
+    colorHasBeenMarkedAsRead  = [UIColor colorWithRed:205.0f/255.0f
+                      green:231.0f/255.0f
+                       blue:180.0f/255.0f
+                      alpha:1.0f];
+    
+
     
 }
 
@@ -83,11 +94,9 @@
     cell.feedTitle.text = [feedData objectForKey: @"title"];
     
     
-    NSLog(@"hasBeenMakedAsRead: %@", [feedData objectForKey: @"hasBeenMarkedAsRead"]);
-    
     // marked as read with grey background
     if ([[feedData objectForKey: @"hasBeenMarkedAsRead"] isEqualToString:@"YES"]) {
-        [cell setBackgroundColor:[UIColor lightGrayColor]]; } else {
+        [cell setBackgroundColor:colorHasBeenMarkedAsRead]; } else {
              [cell setBackgroundColor:[UIColor whiteColor]];
         }
     
@@ -242,7 +251,7 @@
         DetailViewController *destViewController = segue.destinationViewController;
         destViewController.feed = [displayFeeds objectAtIndex:indexPath.row];
         
-        [[self.tableView cellForRowAtIndexPath:indexPath] setBackgroundColor:[UIColor lightGrayColor]];
+        [[self.tableView cellForRowAtIndexPath:indexPath] setBackgroundColor:colorHasBeenMarkedAsRead];
         
         [[displayFeeds objectAtIndex:indexPath.row] setValue:@"YES" forKey:@"hasBeenMarkedAsRead"];
         

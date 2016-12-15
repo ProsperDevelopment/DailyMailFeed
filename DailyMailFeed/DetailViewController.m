@@ -15,13 +15,17 @@
 @implementation DetailViewController
 
 - (void)configureView {
-    // Update the user in   terface for the detail item.
+    // popuplate the detail view with the data
    if (self.feed) {
+     
         self.titleLabel.text = [self.feed valueForKey:@"title"];
+         [[self titleLabel] sizeToFit];
         self.dateLabel.text = [self.feed valueForKey:@"date"];
         self.timeLabel.text = [self.feed valueForKey:@"time"];
         self.descriptionLabel.text = [self.feed valueForKey:@"description"];
-       NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [self.feed valueForKey:@"thumb"]]];
+       [[self descriptionLabel] sizeToFit];
+       
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [self.feed valueForKey:@"thumb"]]];
 
        
        NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {

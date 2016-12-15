@@ -95,13 +95,14 @@ NSString *element;
         
         // remove linebreaks
         feedTitle = [self trimLineBreaks:feedTitle];
+         feedTitle = [[feedTitle substringFromIndex:1] mutableCopy];
         feedDescription = [self trimLineBreaks:feedDescription];
         feedDate = [self trimLineBreaks:feedDate];
         feedUrl = [self trimLineBreaks:feedUrl];
         
         // trim url even more
-              feedUrl = [feedUrl substringFromIndex:1];
-        feedUrl = [feedUrl substringToIndex:[feedUrl length] - 12];
+        feedUrl = [[feedUrl substringFromIndex:1] mutableCopy];
+        feedUrl = [[feedUrl substringToIndex:[feedUrl length] - 12] mutableCopy];
 
         
         //format time and date
